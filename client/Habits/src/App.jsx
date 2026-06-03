@@ -19,6 +19,7 @@ function App() {
     }
   }
 
+  const BASE_URL = import.meta.env.VITE_API_URL || "";
   const [habits, setHabits] = useState([]);
   const [habit, setHabit] = useState('');
 
@@ -30,7 +31,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch("/api/habits")
+    fetch(`${BASE_URL}/api/habits`)
       .then(res => res.json())
       .then(data => setHabits(data));
   }, [])
@@ -50,7 +51,7 @@ function App() {
     }
 
     const habitData = { id: uuidv4(), name: habit }
-    fetch("/api/habits", request("post", habitData))
+    fetch(`${BASE_URL}/api/habits`, request("post", habitData))
       .then(() => {
         setHabits(prevHabits => [...prevHabits, habitData]);
       })
@@ -58,14 +59,14 @@ function App() {
   }
 
   function removeHabit(habitId) {
-    fetch(`/api/habits/${habitId}`, request("delete"))
+    fetch(`${BASE_URL}/api/habits/${habitId}`, request("delete"))
       .then(() => {
         setHabits(prevHabits => prevHabits.filter(h => h.id !== habitId));
       });
   }
 
   function handleCheckbox(habitId) {
-    fetch(`/api/habits/checked/${habitId}`, request("put"))
+    fetch(`${BASE_URL}/api/habits/checked/${habitId}`, request("put"))
       .then(() => {
         setHabits(prevHabits => prevHabits.map(h => h.id === habitId ? { ...h, checked: !h.checked } : h));
       });
@@ -77,7 +78,7 @@ function App() {
   }
 
   function submitEdit() {
-    fetch(`/api/habits/${editingHabitId}`, request("put", { name: editedHabit }))
+    fetch(`${BASE_URL}/api/habits/${editingHabitId}`, request("put", { name: editedHabit }))
       .then(() => {
         setHabits(prevHabits => prevHabits.map(h => h.id === editingHabitId ? {...h, name: editedHabit } : h));
         setEditingHabitId(null);
