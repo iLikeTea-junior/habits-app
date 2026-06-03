@@ -1,0 +1,46 @@
+
+Stuff that I am learning by doing fullstack:
+    - When starting a fullstack project, the first step is to:
+        - Make 2 folders, client (frontend), and a server (backend)
+
+    Backend:
+        - before making the whole backend, we have to install express.
+        The first step:
+            - npm init -y (to create the package.json file with default values)
+            - npm install express (To install the express framework to help build the backend of this project)
+
+        - To check if a request works in the backend you can execute that request in the terminal or with a tool.
+        Terminal:
+            (==> On Windows <==)
+            Invoke-RestMethod -Uri "the route" `
+            -Method "The Method"
+            -Headers @{ "Content-Type" = "application/json" }
+            -Body '{"key":"value"}'
+        
+
+Other info aside:
+    - A package.json is a file that stores dependecies, scripts, and project info
+    you would need a package.json file whenever you would need to use a npm package or node.js tools, like react, vue, etc.
+
+    - it is important to remember that Node does not recreate the file on every request (backend)
+    Everything insided "route.js" is loaded once.
+
+    - to check what packages you have intalled so far you can do 'npm list --depth=0'.
+    If you are trying to check for a specific package, you can just do 'npm list (cors/express/nodemon/etc...)'
+
+    - for linear-gradient -> the color(s) always strats from the bottom to the top.
+    The bonus parameters that it can have at the beginning are:
+        - to left top/to right top/to bottom right/to bottom left (the direction of pointing to the last color)
+        - deg
+        - .turn
+    
+    Bonus color params:
+        - "green 40%" (At what percent of the width of the box will the color green start to appear)
+        - "(.25turn, red, 10%, blue)" -> how much space will the color red take in percentages
+        - 
+
+    Box-shadow params:
+        - (box-shadow: color x(px) y(px) Blurriness(px) shadow-size(px) or color) -> can have multiple colors, seperated by commas.
+
+
+clsx('chip', { lost: isLanguageLost})

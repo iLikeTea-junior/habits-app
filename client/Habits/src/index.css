@@ -1,0 +1,193 @@
+@import url('https://fonts.cdnfonts.com/css/public-pixel');
+@import "tailwindcss";
+
+body {
+    @apply overflow-x-hidden;
+}
+
+main {
+    @apply flex justify-center items-center flex-col;
+}
+
+span.app-name {
+    --custom-shadow: 4px 4px 0px #C7D2FE;
+    font-family: "Public Pixel", sans-serif;
+    @apply text-3xl mt-15 mb-10 text-indigo-500 text-shadow-[var(--custom-shadow)];
+}
+
+.habits-box-wrapper {
+    position: relative;
+}
+
+.habits-box-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        white 0%,
+        transparent 15%,
+        transparent 85%,
+        white 100%
+    );
+}
+
+section.habits-box {
+    background: white;
+    box-shadow: 0px 0px 40px 40px white;
+    border-radius: 50px;
+    @apply max-h-[600px] overflow-y-auto;
+}
+
+/* Customed Scrollbar */
+section.habits-box::-webkit-scrollbar {
+    --shadow-effect: inset 0px 0px 0px 0px white;
+    @apply w-[10px] h-1 shadow-[var(--shadow-effect)];
+}
+
+section.habits-box::-webkit-scrollbar-thumb {
+    @apply bg-indigo-300 rounded-xl;
+}
+
+section.habits-box::-webkit-scrollbar-thumb:hover {
+    @apply bg-indigo-400;
+}
+
+section.habits-box::-webkit-scrollbar-track-piece:start {
+    @apply mt-[50px] rounded-xl bg-indigo-100;
+}
+
+section.habits-box::-webkit-scrollbar-track-piece:end {
+    @apply mb-[50px] rounded-xl bg-indigo-100;
+}
+
+/* Full habit box, including the checkbox */
+div.habit-box {
+    position: relative;
+    @apply flex items-center my-10 mr-8;
+}
+
+div.habit-box::after {
+    @apply content-[''] absolute pointer-events-none z-10 opacity-0 transition-opacity duration-500;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-image: url('./assets/Strikethrough-nobg.png');
+    background-size: 50% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+div.habit-box.strikethrough::after {
+    opacity: 1;
+}
+
+div.habit-container {
+    @apply flex items-center border-3 rounded-r-[50px] overflow-hidden border-indigo-100 rounded-l-2xl min-w-[500px] transition-all duration-300;
+}
+
+div.habit-container:hover {
+    --shadow-style:
+        inset 0px 0px 0px 0px #C7D2FE,
+        inset -110px 0px 20px -5px #C7D2FE,
+        inset 0px 0px 10px 0px #C7D2FE
+    ;
+    @apply shadow-[var(--shadow-style)] scale-99;
+}
+
+div.habit {
+    @apply text-indigo-400 font-bold text-2xl px-10 pr-30 flex-grow-1 cursor-pointer;
+}
+
+input[type="text"].edit-habit {
+    @apply border-none outline-none font-bold bg-transparent;
+}
+
+/* A styled div box, on the right */
+div.remove-btn-side {
+    --indigo-shadow: 10px 0px 40px 50px #C7D2FE;
+    @apply bg-indigo-200 rounded-r-4xl shadow-[var(--indigo-shadow)];
+}
+
+/* Remove button section */
+button.remove-btn {
+    @apply bg-red-500 p-6 pl-5 border-2 border-red-400 rounded-r-[50px] transition-all duration-300;
+}
+
+button.remove-btn:hover {
+    @apply bg-gray-50 text-red-600;
+}
+
+/* Habit input section */
+input {
+    @apply border-2 py-1.5 m-3 rounded-full px-3 outline-none border-gray-300;
+}
+
+input::placeholder {
+    @apply font-semibold text-indigo-300 p-0.5;
+}
+
+input[type="text"] {
+    @apply font-semibold text-indigo-400;
+}
+
+p.invalid-input {
+    @apply text-red-600 font-semibold italic;
+
+    opacity: 0;
+    transform: translate(-6px);
+
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+p.invalid-input.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+p.invalid-input.show.persist {
+    animation: shakeMessage 0.2s both;
+}
+
+@keyframes shakeMessage {
+    0% { transform: translateX(0) }
+    33% { transform: translateX(10px) }
+    66% { transform: translateX(-10px) }
+    99% { transform: translateX(0) }
+}
+
+/* Add habit button section */
+button {
+    @apply border-2 p-2 rounded-lg bg-indigo-400 border-indigo-100 text-white font-semibold m-3 cursor-pointer transition-all duration-300;
+}
+
+button:hover {
+    --shadow-effect: 0px 0px 10px 1px #C7D2FE;
+    @apply shadow-[var(--shadow-effect)];
+}
+
+button:active {
+    --shadow-effect: 0px 0px 15px 0px #818CF8;
+    @apply scale-90 border-indigo-300 shadow-[var(--shadow-effect)] transition-all duration-75;
+}
+
+input[type="checkbox"] {
+    transform: translateY(3px);
+}
+
+/* habit completed */
+div.habit-container.completed {
+    position: relative;
+    @apply pointer-events-none opacity-[45%] transition-opacity duration-500;
+}
+
+form {
+    background: white;
+    border-radius: 50px;
+    box-shadow: 0px 0px 40px 40px white;
+    position: relative;
+}
