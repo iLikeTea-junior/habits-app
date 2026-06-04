@@ -4,7 +4,7 @@ A small habit app. With a small frontend, backend, and a little bit of animation
 
 Live link is right here, if u want to check it out ---> https://habits-app-frontend.onrender.com
 
-*This was hosted with render, render has to boot up the server from scratch, so the webpage might feel slow*
+*This was hosted with render. Render has to boot up the server from scratch, so the webpage might feel slow*
 
 # Technologies
   - Javascript
