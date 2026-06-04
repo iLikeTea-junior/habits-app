@@ -92,7 +92,7 @@ function App() {
       <Cloud/>
 
       {/* where the lists of habits will be displayed */}
-      <div className="habits-box-wrapper">
+      <div className={clsx({"habits-box-wrapper": habits.length > 4})}>
         <motion.section
           className="habits-box"
           initial={{ opacity: 0 }}

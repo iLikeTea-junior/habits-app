@@ -12,7 +12,7 @@ main {
 span.app-name {
     --custom-shadow: 4px 4px 0px #C7D2FE;
     font-family: "Public Pixel", sans-serif;
-    @apply text-3xl mt-15 mb-10 text-indigo-500 text-shadow-[var(--custom-shadow)];
+    @apply text-3xl mt-15 mb-9 text-indigo-500 text-shadow-[var(--custom-shadow)];
 }
 
 .habits-box-wrapper {
@@ -20,11 +20,7 @@ span.app-name {
 }
 
 .habits-box-wrapper::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 50px;
-    pointer-events: none;
+    @apply content-[''] absolute inset-0 rounded-[50px] pointer-events-none;
     background: linear-gradient(
         to bottom,
         white 0%,
@@ -35,10 +31,8 @@ span.app-name {
 }
 
 section.habits-box {
-    background: white;
-    box-shadow: 0px 0px 40px 40px white;
-    border-radius: 50px;
-    @apply max-h-[600px] overflow-y-auto;
+    --shadow-effect: 0px 0px 30px 30px white;
+    @apply max-h-[600px] overflow-y-auto shadow-[var(--shadow-effect)] rounded-[50px] bg-white;
 }
 
 /* Customed Scrollbar */
@@ -186,8 +180,6 @@ div.habit-container.completed {
 }
 
 form {
-    background: white;
-    border-radius: 50px;
-    box-shadow: 0px 0px 40px 40px white;
-    position: relative;
+    --shadow-effect: 0px 0px 30px 30px white;
+    @apply bg-white rounded-[50px] shadow-[var(--shadow-effect)] relative mt-[10px];
 }
